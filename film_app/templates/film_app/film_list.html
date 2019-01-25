@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dango Film App</title>
+</head>
+<body>
+    <ul>
+        {% for film in object_list %}
+        <li>{{ film }}</li>
+        {% empty %}
+        <li>Belum ada film</li>
+        {% endfor %}
+    </ul>
+    <p>
+        Using https?
+        {{ request.is_secure | yesno }}
+    </p>
+</body>
+</html>
