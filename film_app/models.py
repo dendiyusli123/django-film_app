@@ -22,7 +22,7 @@ class Film(models.Model):
         choices = ratings,
         default = t_rating
     )
-    runtime = models.PositiveIntegerField
+    runtime = models.PositiveIntegerField()
     website = models.URLField(
         blank = True
     )
