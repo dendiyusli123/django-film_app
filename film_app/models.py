@@ -27,5 +27,8 @@ class Film(models.Model):
         blank = True
     )
 
+    class Meta:
+        ordering = ('-tahun', 'judul')
+
     def __str__(self):
         return '{} ({})'.format(self.judul, self.tahun)

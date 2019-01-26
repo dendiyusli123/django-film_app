@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block main %}
-    <u>
+    <ul>
         {% for film in object_list %}
             <li>
                 <a href="{% url 'film_app:FilmDetail', pk:film.id">
@@ -13,5 +13,36 @@
                 </a>
             </li>
         {% endfor %}
-    </u>
+    </ul>
+    {% if is_paginated %}
+        <nav>
+            <ul class="pagination">
+                <li class="page-item">
+                    <a href="{% url 'film_app:FilmList' %}?page=1" class="page-link">Awal</a>
+                </li>
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a href="{% url 'film_app:FilmList' %}?page={{ page_obj.previous_page_number }}" class="page-link">
+                        {{ page_obj.previous_page_number }}
+                    </a>
+                </li>
+                {% endif %}
+                <li class="page-item active">
+                    <a href="{% url 'film_app:FilmList' %}?page={{ page_obj.number }}" class="page-link">
+                        {{ page_obj.number }}
+                    </a>
+                </li>
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a href="{% url 'film_app:FilmList' %}?page={{ page_obj.next_page_number }}" class="page-link">
+                        {{ page_obj.next_page_number }}
+                    </a>
+                </li>
+                {% endif %}
+                <li class="page-item">
+                    <a href="{% url 'film_app:FilmList' %}?page=last" class="page-link">Akhir</a>
+                </li>
+            </ul>
+        </nav>
+    {% endif %}
 {% endblock %}
