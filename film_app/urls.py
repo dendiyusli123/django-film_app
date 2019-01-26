@@ -6,6 +6,11 @@ urlpatterns = [
     path(
         'films',
         views.FilmList.as_view(),
-        name = 'MovieList'
+        name = 'FilmList'
+    ),
+    path(
+        'film/<int:pk>',
+        views.FilmDetail.as_view(),
+        name = 'FilmDetail'
     ),
 ]
