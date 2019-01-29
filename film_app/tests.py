@@ -26,7 +26,7 @@ class FilmListPaginationTestCase(TestCase):
     def testUtamaPage(self):
         film_list_path = reverse('film_app:FilmList')
         request = RequestFactory().get(path=film_list_path)
-        response = FilmList.as_view()(request)
+        response = FilmList.as_view() (request)
         self.assertEqual(200, response.status_code)
         self.assertTrue(response.context_data['is_paginated'])
         self.assertInHTML(
