@@ -77,4 +77,19 @@ class Orang(models.Model):
             self.nama_akhir,
             self.lahir
         )
+
+class Role:
+    film = models.ForeignKey(Film, on_delete = models.DO_NOTHING)
+    orang = models.ForeignKey(Orang, on_delete=models.DO_NOTHING)
+    nama = models.CharField(max_length=140)
+
+    def __str__(self):
+        return "{} {} {}".format(self.movie_id, self.orang_id, self.nama)
+
+    class Meta:
+        unique_together = (
+            'film',
+            'orang',
+            'nama'
+        )
     
