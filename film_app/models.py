@@ -78,7 +78,7 @@ class Orang(models.Model):
             self.lahir
         )
 
-class Role:
+class Role(models.Model):
     film = models.ForeignKey(Film, on_delete = models.DO_NOTHING)
     orang = models.ForeignKey(Orang, on_delete=models.DO_NOTHING)
     nama = models.CharField(max_length=140)
