@@ -27,6 +27,26 @@ class Film(models.Model):
         blank = True
     )
 
+    direktur = models.ForeignKey(
+        to = 'Orang',
+        on_delete = models.SET_NULL,
+        related_name = 'diarahkan',
+        null = True,
+        blank = True
+    )
+
+    pengarangs = models.ManyToManyField(
+        to = 'Orang',
+        related_name = 'menulis_kredit',
+        blank = True
+    )
+
+    aktors = models.ManyToManyField(
+        to = 'Orang',
+        through = 'Role',
+        blank = True
+    )
+
     class Meta:
         ordering = ('-tahun', 'judul')
 
