@@ -53,11 +53,22 @@ class Film(models.Model):
     def __str__(self):
         return '{} ({})'.format(self.judul, self.tahun)
 
+class OrangManager(models.Manager):
+    def all_with_prefetch_films(self):
+        qs = self.get_queryset()
+        return qs.prefetch_related(
+            'diarahkan',
+            'menulis_kredit',
+            'role_set_film'
+        )
+
 class Orang(models.Model):
     nama_awal = models.CharField(max_length=140)
     nama_akhir = models.CharField(max_length=140)
     lahir = models.DateField()
     mati = models.DateField(null=True, blank=True)
+
+    objects = OrangManager()
 
     class Meta:
         ordering = (
